@@ -1,266 +1,456 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Abdullah | Python & Data Automation Expert</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #00f2fe;
-            --secondary: #4facfe;
-            --dark-bg: #030712;
-            --card-bg: #111827;
-            --text-main: #f3f4f6;
-            --text-dim: #9ca3af;
-            --accent-glow: rgba(0, 242, 254, 0.15);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Abdullah — AI Systems & Automation</title>
+<meta name="description" content="I build AI chatbots, AI voice callers, dashboards, and websites for businesses — planned, built, and delivered ready to use.">
+<meta property="og:title" content="Muhammad Abdullah — AI Systems & Automation">
+<meta property="og:description" content="I build AI chatbots, AI voice callers, dashboards, and websites for businesses.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230d1117%22/><text x=%2250%22 y=%2266%22 font-size=%2255%22 fill=%22%237ee787%22 text-anchor=%22middle%22 font-family=%22monospace%22>A</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --bg: #0d1117;
+        --bg-raised: #131922;
+        --text: #c9d1d9;
+        --text-dim: #7d8590;
+        --line: #21262d;
+        --green: #7ee787;
+        --yellow: #e3b341;
+        --blue: #79c0ff;
+        --pink: #ff7b72;
+        --purple: #d2a8ff;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        background: var(--bg); color: var(--text);
+        font-family: 'IBM Plex Sans', sans-serif; line-height: 1.7;
+        overflow-x: hidden; font-size: 16.5px;
+    }
+    h1, h2, h3 { font-family: 'JetBrains Mono', monospace; font-weight: 600; letter-spacing: -0.01em; color: #e6edf3; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background-color: var(--dark-bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
+    nav {
+        position: fixed; width: 100%; top: 0; z-index: 1000;
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 18px 8%; background: rgba(13,17,23,0.92); backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+    }
+    .logo { font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #e6edf3; }
+    .logo .p1 { color: var(--text-dim); }
+    .logo .p2 { color: var(--green); }
+    .nav-links { display: flex; align-items: center; }
+    .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 8px; padding: 8px 14px; border-radius: 20px; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; transition: 0.2s ease; }
+    .nav-links a:hover { color: var(--green); background: rgba(126,231,135,0.08); }
+    .nav-toggle { display: none; background: none; border: 1px solid var(--line); border-radius: 8px; width: 40px; height: 40px; cursor: pointer; color: var(--text); font-size: 1.1rem; }
 
-        nav {
-            position: fixed; width: 100%; padding: 25px 10%; display: flex;
-            justify-content: space-between; align-items: center; z-index: 1000;
-            background: rgba(3, 7, 18, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        .logo { font-size: 1.6rem; font-weight: 800; letter-spacing: -1px; }
-        .logo span { color: var(--primary); }
-        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 35px; font-size: 0.9rem; font-weight: 500; transition: 0.3s; opacity: 0.8; }
-        .nav-links a:hover { opacity: 1; color: var(--primary); }
+    section { padding: 110px 8%; max-width: 1140px; margin: 0 auto; }
 
-        .hero {
-            min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 0 10%;
-            background: radial-gradient(circle at 50% 50%, #111827 0%, #030712 100%);
-        }
-        .hero-badge {
-            background: var(--accent-glow); color: var(--primary); padding: 8px 20px;
-            border-radius: 100px; font-size: 0.8rem; font-weight: 600; margin-bottom: 20px;
-            border: 1px solid rgba(0, 242, 254, 0.3);
-        }
-        .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
-        .hero h1 span { background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 800px; margin-bottom: 40px; }
+    /* Hero — terminal window */
+    .hero { padding-top: 170px; padding-bottom: 90px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: center; }
+    .hero .kicker { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--green); margin-bottom: 18px; }
+    .hero .kicker::before { content: '$ '; color: var(--text-dim); }
+    .hero-name { font-family: 'IBM Plex Sans', sans-serif; font-size: 2.1rem; font-weight: 600; color: #e6edf3; margin-bottom: 16px; letter-spacing: -0.01em; position: relative; display: inline-block; }
+    .hero-name::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 46px; height: 3px; background: var(--green); border-radius: 3px; }
+    .hero h1 {
+        font-size: clamp(1.7rem, 3.2vw, 2.3rem); line-height: 1.45; margin-bottom: 26px; margin-top: 22px; font-family: 'IBM Plex Sans', sans-serif; color: var(--text-dim); font-weight: 500;
+    }
+    .hero p { font-size: 1.1rem; color: var(--text-dim); max-width: 520px; margin-bottom: 40px; }
 
-        section { padding: 120px 10%; }
-        .section-tag { color: var(--primary); font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
-        .section-title { font-size: 2.5rem; margin-bottom: 60px; font-weight: 700; }
+    .btn-row { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary, .btn-secondary {
+        padding: 14px 28px; border-radius: 30px; font-size: 0.92rem; font-weight: 500;
+        text-decoration: none; display: inline-block; transition: 0.25s ease; letter-spacing: 0.01em;
+    }
+    .btn-primary { background: var(--green); color: #0d1117; box-shadow: 0 0 0 rgba(126,231,135,0); }
+    .btn-primary:hover { background: #8fffa3; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(126,231,135,0.25); }
+    .btn-secondary { border: 1px solid var(--line); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+    .btn-whatsapp {
+        padding: 14px 28px; border-radius: 30px; font-size: 0.92rem; font-weight: 500;
+        text-decoration: none; display: inline-block; transition: 0.25s ease; letter-spacing: 0.01em;
+        background: #25D366; color: #0d1117;
+    }
+    .btn-whatsapp:hover { background: #3ee87f; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,211,102,0.25); }
+    .hero-note { font-size: 0.85rem; color: var(--text-dim); margin-top: 18px; font-family: 'JetBrains Mono', monospace; max-width: none; }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        
-        .card {
-            background: var(--card-bg); padding: 40px; border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.03); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-        .card:hover { 
-            transform: translateY(-12px); border-color: rgba(0, 242, 254, 0.4); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-        .card i { font-size: 2rem; background: linear-gradient(45deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px; display: block; }
-        .card h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
-        .card p { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 20px; }
-        
-        .skills-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 50px; justify-content: center; }
-        .skill-chip { 
-            background: #1f2937; padding: 10px 22px; border-radius: 12px; 
-            font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-        }
-        .skill-chip:hover { border-color: var(--primary); background: var(--accent-glow); }
+    .terminal {
+        background: var(--bg-raised); border: 1px solid var(--line); border-radius: 14px;
+        overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    }
+    .terminal-bar { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .terminal-bar span { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+    .terminal-bar .r { background: #ff5f56; } .terminal-bar .y { background: #ffbd2e; } .terminal-bar .g { background: #27c93f; }
+    .terminal-body { padding: 22px 20px; font-family: 'JetBrains Mono', monospace; font-size: 0.83rem; line-height: 1.9; }
+    .terminal-body .c1 { color: var(--purple); } .terminal-body .c2 { color: var(--blue); } .terminal-body .c3 { color: var(--yellow); }
+    .terminal-body .c4 { color: var(--green); } .terminal-body .c5 { color: var(--text-dim); }
+    .terminal-body .cursor { display: inline-block; width: 7px; height: 14px; background: var(--green); vertical-align: middle; animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
 
-        .timeline { border-left: 2px solid var(--accent-glow); padding-left: 30px; margin-left: 10px; }
-        .timeline-item { position: relative; margin-bottom: 50px; }
-        .timeline-item::before { 
-            content: ''; width: 14px; height: 14px; background: var(--primary); 
-            position: absolute; left: -38px; top: 8px; border-radius: 50%;
-            box-shadow: 0 0 10px var(--primary);
-        }
-        .timeline-date { font-size: 0.85rem; color: var(--primary); font-weight: 700; }
+    .rule { border: none; border-top: 1px solid var(--line); }
 
-        .btn-group { display: flex; gap: 20px; justify-content: center; }
-        .btn-primary { 
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: #030712; padding: 16px 35px; border-radius: 14px;
-            text-decoration: none; font-weight: 700; transition: 0.3s;
-        }
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.1); color: #fff;
-            padding: 16px 35px; border-radius: 14px; text-decoration: none; font-weight: 600;
-        }
-        .btn-primary:hover { transform: scale(1.05); box-shadow: 0 10px 25px rgba(0, 242, 254, 0.3); }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 50px; flex-wrap: wrap; gap: 20px; }
+    .section-head .label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 10px; }
+    .section-head .label::before { content: '// '; color: var(--green); }
+    .section-head h2 { font-size: 2rem; font-family: 'IBM Plex Sans', sans-serif; color: #e6edf3; }
+    .section-head p { color: var(--text-dim); max-width: 380px; font-size: 1rem; }
 
-        .project-link { color: var(--primary); text-decoration: none; font-size: 0.85rem; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; }
+    /* Services — file-list style */
+    .service-list { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .service-row {
+        display: grid; grid-template-columns: 34px 220px 1fr; gap: 24px;
+        padding: 30px 26px; border-top: 1px solid var(--line); align-items: baseline;
+    }
+    .service-list .service-row:first-child { border-top: none; }
+    .service-row .num { font-family: 'JetBrains Mono', monospace; color: var(--text-dim); font-size: 0.85rem; }
+    .service-row h3 { font-size: 1.2rem; font-family: 'IBM Plex Sans', sans-serif; color: var(--green); font-weight: 600; }
+    .service-row p { color: var(--text-dim); font-size: 1rem; }
 
-        footer { padding: 80px 10% 40px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
-        .social-links a { font-size: 1.4rem; color: var(--text-dim); margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: var(--primary); }
+    /* Projects */
+    .project-list { display: flex; flex-direction: column; gap: 18px; }
+    .project-row {
+        border: 1px solid var(--line); border-radius: 14px; padding: 30px;
+        transition: 0.25s ease;
+    }
+    .project-row:hover { border-color: var(--green); transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.3); }
+    .project-row .file-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 10px; }
+    .project-row .file-tag::before { content: '📁 '; }
+    .project-row h3 { font-size: 1.3rem; margin-bottom: 10px; font-family: 'IBM Plex Sans', sans-serif; color: #e6edf3; }
+    .project-row p { color: var(--text-dim); font-size: 1rem; max-width: 720px; }
+    .project-row .stack { margin-top: 16px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .project-row .stack span {
+        font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--blue);
+        border: 1px solid var(--line); padding: 5px 13px; border-radius: 20px;
+    }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .nav-links { display: none; }
-            section { padding: 80px 5%; }
+    .github-cta {
+        margin-top: 40px; padding: 34px; border: 1px solid var(--line); border-radius: 14px;
+        display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;
+        background: var(--bg-raised);
+    }
+    .github-cta p { color: var(--text-dim); max-width: 400px; font-size: 0.9rem; }
+    .github-cta h3 { font-size: 1.1rem; margin-bottom: 8px; font-family: 'IBM Plex Sans', sans-serif; color: #e6edf3; }
+
+    /* Timeline */
+    .timeline-row {
+        display: grid; grid-template-columns: 150px 1fr; gap: 24px;
+        padding: 24px 0; border-top: 1px solid var(--line);
+    }
+    .timeline-row:last-child { border-bottom: 1px solid var(--line); }
+    .timeline-row .date { color: var(--yellow); font-size: 0.83rem; font-family: 'JetBrains Mono', monospace; }
+    .timeline-row h3 { font-size: 1.05rem; margin-bottom: 6px; font-family: 'IBM Plex Sans', sans-serif; color: #e6edf3; }
+    .timeline-row p { color: var(--text-dim); font-size: 0.9rem; }
+
+    /* Stack */
+    .stack-wrap { display: flex; flex-wrap: wrap; gap: 10px; }
+    .stack-chip {
+        border: 1px solid var(--line); padding: 10px 20px; border-radius: 24px;
+        font-size: 0.83rem; color: var(--text); font-family: 'JetBrains Mono', monospace;
+        background: var(--bg-raised); transition: 0.2s ease;
+    }
+    .stack-chip:hover { border-color: var(--green); color: var(--green); }
+
+    footer { padding: 70px 8% 44px; border-top: 1px solid var(--line); text-align: center; }
+    footer .label { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--text-dim); margin-bottom: 14px; }
+    footer .label::before { content: '// '; color: var(--green); }
+    footer h2 { font-size: 1.8rem; margin-bottom: 16px; font-family: 'IBM Plex Sans', sans-serif; color: #e6edf3; }
+    footer p { color: var(--text-dim); margin-bottom: 32px; }
+    .social-row { display: flex; justify-content: center; gap: 16px; margin-top: 36px; font-size: 0.85rem; font-family: 'JetBrains Mono', monospace; }
+    .social-row a { color: var(--text-dim); text-decoration: none; border: 1px solid var(--line); padding: 10px 22px; border-radius: 24px; transition: 0.2s ease; }
+    .social-row a:hover { color: var(--green); border-color: var(--green); }
+    .copyright { margin-top: 36px; font-size: 0.78rem; color: var(--text-dim); font-family: 'JetBrains Mono', monospace; }
+
+    /* Laptop / small desktop */
+    @media (max-width: 1100px) {
+        section { padding: 100px 6%; }
+    }
+
+    /* Tablet / iPad */
+    @media (max-width: 900px) {
+        .hero { grid-template-columns: 1fr; gap: 44px; padding-top: 140px; }
+        .terminal { max-width: 480px; }
+        .service-row { grid-template-columns: 30px 1fr; }
+        .service-row h3 { grid-column: 2; }
+        .service-row p { grid-column: 2; }
+    }
+
+    /* Mobile / iPhone */
+    @media (max-width: 640px) {
+        body { font-size: 15.5px; }
+        section { padding: 70px 6%; }
+        .hero { padding-top: 110px; padding-bottom: 60px; }
+        .hero-name { font-size: 1.7rem; }
+        .hero h1 { font-size: 1.5rem; line-height: 1.4; }
+        .hero p { font-size: 1rem; }
+        .btn-row { flex-direction: column; }
+        .btn-primary, .btn-secondary, .btn-whatsapp { text-align: center; width: 100%; }
+        .hero-note { font-size: 0.78rem; }
+        .terminal-body { font-size: 0.78rem; padding: 18px 16px; }
+
+        .nav-toggle { display: block; }
+        .nav-links {
+            position: fixed; top: 66px; left: 0; right: 0;
+            flex-direction: column; align-items: stretch; gap: 4px;
+            background: var(--bg-raised); border-bottom: 1px solid var(--line);
+            padding: 14px 6%; transform: translateY(-140%); transition: transform 0.25s ease;
         }
-    </style>
+        .nav-links.open { transform: translateY(0); }
+        .nav-links a { margin-left: 0; padding: 12px 14px; }
+
+        .section-head { flex-direction: column; align-items: flex-start; }
+        .section-head h2 { font-size: 1.5rem; }
+
+        .service-row { grid-template-columns: 1fr; gap: 8px; padding: 22px 20px; }
+        .service-row .num { display: none; }
+
+        .project-row { padding: 22px; }
+        .project-row h3 { font-size: 1.1rem; }
+
+        .github-cta { flex-direction: column; align-items: flex-start; text-align: left; }
+        .github-cta a { width: 100%; text-align: center; }
+
+        .timeline-row { grid-template-columns: 1fr; gap: 6px; }
+
+        footer h2 { font-size: 1.4rem; }
+        .social-row { flex-wrap: wrap; gap: 10px; }
+    }
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">ABDULLAH<span>.DEV</span></div>
-        <div class="nav-links">
-            <a href="#about">Summary</a>
-            <a href="#services">Expertise</a>
-            <a href="#projects">Portfolio</a>
-            <a href="#experience">History</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+<nav>
+    <div class="logo"><span class="p1">~/</span>abdullah<span class="p2">.dev</span></div>
+    <div class="nav-links" id="navLinks">
+        <a href="#about">about</a>
+        <a href="#services">work</a>
+        <a href="#process">process</a>
+        <a href="#projects">projects</a>
+        <a href="#experience">background</a>
+        <a href="#contact">contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+</nav>
 
-    <section class="hero">
-        <div class="hero-badge">Python Web Scraping & Automation Expert</div>
-        <h1><span>Muhammad Abdullah</span></h1>
-        <p>Building high-performance <b>Python scripts</b> that scrape, clean, and automate complex data workflows. I help businesses turn unstructured web data into organized, actionable Excel insights.</p>
-        <div class="btn-group">
-            <a href="mailto:muabdullah0809@gmail.com" class="btn-primary">Start a Project</a>
-            <a href="https://github.com/mu-abdullahdev" class="btn-secondary">Explore GitHub</a>
+<section class="hero">
+    <div>
+        <div class="kicker">Available for freelance & contract work</div>
+        <div class="hero-name">Muhammad Abdullah</div>
+        <h1>I build AI chatbots, voice callers, dashboards, and websites for businesses.</h1>
+        <p>Want to automate customer support, take calls automatically, or get a dashboard that updates itself? I plan it, build it, and hand you something ready to use — not just a demo.</p>
+        <div class="btn-row">
+            <a href="mailto:muabdullah0809@gmail.com" class="btn-primary">Start a project</a>
+            <a href="https://wa.me/923243676105?text=Hi%20Abdullah%2C%20I%20found%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20project." class="btn-whatsapp" target="_blank">WhatsApp me</a>
+            <a href="https://github.com/mu-abdullahdev" class="btn-secondary">See my GitHub</a>
         </div>
-    </section>
-
-    <section id="about">
-        <span class="section-tag">About Me</span>
-        <h2 class="section-title">The Bridge Between Data & Logic</h2>
-        <div class="grid">
-            <div class="card" style="grid-column: span 2;">
-                <h3>Summary</h3>
-                <p>I am a Computer Science student with a passion for <b>Data Engineering</b>. I specialize in extracting data from difficult-to-reach web sources and using <b>Pandas</b> to transform messy information into professional reports. My background in Graphic Design ensures that every data delivery is not only accurate but also visually organized and easy to understand.</p>
-                <div class="skills-wrap" style="justify-content: flex-start; margin-top: 20px;">
-                    <div class="skill-chip">Web Scraping</div>
-                    <div class="skill-chip">Data Cleaning (Pandas)</div>
-                    <div class="skill-chip">Excel Automation</div>
-                    <div class="skill-chip">Pythonic Solutions</div>
-                </div>
-            </div>
-            <div class="card">
-                <h3>My Goal</h3>
-                <p>To eliminate manual data entry for businesses by creating robust, scalable automation bots that work 24/7.</p>
-            </div>
+        <p class="hero-note">Usually replies within 24 hours · Free first chat to scope your project · Worked with multiple clients over the past 2 years</p>
+    </div>
+    <div class="terminal">
+        <div class="terminal-bar"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+        <div class="terminal-body">
+<span class="c5">What I build:</span><br><br>
+<span class="c1">AI chatbots & integrations</span><br>
+<span class="c1">AI voice callers</span><br>
+<span class="c1">Dashboards & internal tools</span><br>
+<span class="c1">Websites & landing pages</span><br><br>
+<span class="c4">✓ Available for new projects</span><span class="cursor"></span>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="services" style="background: rgba(255,255,255,0.01);">
-        <span class="section-tag">Expertise</span>
-        <h2 class="section-title">Core Specialization</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-spider"></i>
-                <h3>Web Scraping</h3>
-                <p>Extracting high-volume data from e-commerce, real estate, and social platforms using BeautifulSoup4 and Requests.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-broom"></i>
-                <h3>Data Wrangling</h3>
-                <p>Using Pandas to clean messy datasets, handle missing values, and prepare data for advanced business analysis.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-file-excel"></i>
-                <h3>Excel Automation</h3>
-                <p>Automating repetitive Excel tasks, merging multiple sheets, and generating dynamic reports using Openpyxl.</p>
-            </div>
+<hr class="rule">
+
+<section id="about">
+    <div class="section-head">
+        <div>
+            <div class="label">about</div>
+            <h2>Who I am</h2>
         </div>
-    </section>
+        <p>Computer Science student who now focuses on AI and automation instead of web scraping.</p>
+    </div>
+    <p style="max-width: 680px; color: var(--text-dim); font-size: 1.05rem;">
+        I build practical AI tools for businesses — things like a chatbot that knows your product, a phone agent that can take calls and book appointments, or a dashboard that saves you from checking five spreadsheets a day. On past projects, this kind of automation has cut manual work by up to 80% for clients. My focus is always on something that works reliably day to day, not just a flashy demo.
+    </p>
+</section>
 
-    <section id="projects">
-        <span class="section-tag">Portfolio</span>
-        <h2 class="section-title">Featured Python Works</h2>
-        <div class="grid">
-            <div class="card">
-                <h3 style="color: var(--primary);">SmartPhone Price E-commerce Tracker</h3>
-                <p>A smart scraper that monitors mobile prices daily, tracks discounts, and saves historical data into automated Excel reports.</p>
-                <div class="skill-chip" style="font-size: 0.7rem;">Python</div>
-                <div class="skill-chip" style="font-size: 0.7rem;">Scraping</div>
-                <a href="#" class="project-link">View Repo <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--primary);">Real Estate Data Extractor</h3>
-                <p>Freelance project: Scraped property and landlord details from multiple pages, delivering a cleaned dataset of 1000+ entries.</p>
-                <div class="skill-chip" style="font-size: 0.7rem;">Pandas</div>
-                <div class="skill-chip" style="font-size: 0.7rem;">Data Cleaning</div>
-                <a href="#" class="project-link">View Repo <i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="card">
-                <h3 style="color: var(--primary);">Staff Management (CRUD)</h3>
-                <p>A persistent file-handling system designed to manage organizational records with full search and update capabilities.</p>
-                <div class="skill-chip" style="font-size: 0.7rem;">Logic</div>
-                <div class="skill-chip" style="font-size: 0.7rem;">File Systems</div>
-                <a href="#" class="project-link">View Repo <i class="fas fa-external-link-alt"></i></a>
-            </div>
+<hr class="rule">
+
+<section id="services">
+    <div class="section-head">
+        <div>
+            <div class="label">services</div>
+            <h2>Where I help</h2>
         </div>
-    </section>
-
-    <section id="experience">
-        <span class="section-tag">Journey</span>
-        <h2 class="section-title">Education & Work</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2024 - PRESENT</div>
-                <h3>BS Computer Science</h3>
-                <p>Emerson University, Multan</p>
-                <p style="margin-top: 10px;">Focusing on Software Engineering, Data Structures, and Advanced Database Systems.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2024 - PRESENT</div>
-                <h3>Freelance Automation Developer</h3>
-                <p>Remote Work</p>
-                <p style="margin-top: 10px;">Helping clients automate data extraction and report generation, reducing manual work by up to 80%.</p>
-            </div>
+        <p>The four kinds of projects I get hired for most.</p>
+    </div>
+    <div class="service-list">
+        <div class="service-row">
+            <div class="num">01</div>
+            <h3>AI Integration</h3>
+            <p>I add AI to a business you already run — for example a support inbox, a website, or an internal tool — so it does real work, not just a chat demo.</p>
         </div>
-    </section>
-
-    <section id="skills" style="background: rgba(255,255,255,0.01);">
-        <span class="section-tag">Skills</span>
-        <h2 class="section-title">Tech Stack</h2>
-        <div class="skills-wrap">
-            <div class="skill-chip">Python (Core)</div>
-            <div class="skill-chip">Pandas</div>
-            <div class="skill-chip">BeautifulSoup4</div>
-            <div class="skill-chip">Requests</div>
-            <div class="skill-chip">Openpyxl</div>
-            <div class="skill-chip">Git & GitHub</div>
-            <div class="skill-chip">SQL Basics</div>
-            <div class="skill-chip">UI Design Thinking</div>
+        <div class="service-row">
+            <div class="num">02</div>
+            <h3>AI Voice Callers</h3>
+            <p>An AI that can answer or make phone calls on your behalf — booking appointments, following up with leads, or answering common questions.</p>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2 class="section-title">Let's Automate Your Business</h2>
-        <div style="text-align: center;">
-            <p style="margin-bottom: 30px; color: var(--text-dim);">Need a custom scraper or an automated Excel tool? Let's talk.</p>
-            <a href="mailto:muabdullah0809@gmail.com" class="btn-primary">Send Email</a>
-            <a href="https://linkedin.com/in/muhammad-abdullah-12a58038a" class="btn-secondary" style="margin-left:15px;">LinkedIn</a>
+        <div class="service-row">
+            <div class="num">03</div>
+            <h3>Dashboards & Internal Tools</h3>
+            <p>A simple dashboard that pulls your data into one place and keeps it updated automatically, so you're not doing it by hand.</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://linkedin.com/in/muhammad-abdullah-12a58038a" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/mu-abdullahdev" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="mailto:muabdullah0809@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div class="service-row">
+            <div class="num">04</div>
+            <h3>Websites & Landing Pages</h3>
+            <p>A fast, clean website or landing page for your product or service, built to get visitors to actually take action.</p>
         </div>
-        <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.9rem;">&copy; 2026 Muhammad Abdullah | Built with Python Passion</p>
-    </footer>
+    </div>
+</section>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+<hr class="rule">
+
+<section id="process">
+    <div class="section-head">
+        <div>
+            <div class="label">process</div>
+            <h2>How it works</h2>
+        </div>
+        <p>No long forms, no confusing quotes — just a simple back and forth.</p>
+    </div>
+    <div class="service-list">
+        <div class="service-row">
+            <div class="num">01</div>
+            <h3>You tell me the problem</h3>
+            <p>Message me on WhatsApp or email with what you're trying to solve. No technical detail needed — I'll ask the right questions.</p>
+        </div>
+        <div class="service-row">
+            <div class="num">02</div>
+            <h3>I scope it and quote a price</h3>
+            <p>You get a clear idea of what I'll build, how long it'll take, and what it costs — before any commitment. Pricing depends on scope, and the first conversation is free.</p>
+        </div>
+        <div class="service-row">
+            <div class="num">03</div>
+            <h3>I build and keep you updated</h3>
+            <p>I share progress as I go instead of disappearing until the end, so there are no surprises.</p>
+        </div>
+        <div class="service-row">
+            <div class="num">04</div>
+            <h3>You get something ready to use</h3>
+            <p>Delivered working, with a short walkthrough so you know how to use it — plus support if something needs adjusting after.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="projects">
+    <div class="section-head">
+        <div>
+            <div class="label">projects</div>
+            <h2>Selected projects</h2>
+        </div>
+        <p>A mix of client and personal builds — spanning AI assistants, automation tooling, and full production apps.</p>
+    </div>
+    <div class="project-list">
+        <div class="project-row">
+            <div class="file-tag">web-app</div>
+            <h3>CarbonLens — Carbon Footprint Platform</h3>
+            <p>A full web application for cotton and rice carbon footprint calculation, built on IPCC methodology. Includes a multi-step data wizard, PDF report generation, an AI chatbot for user questions, and account-based history tracking.</p>
+            <div class="stack"><span>Flask</span><span>AI Chatbot</span><span>PDF Reporting</span><span>Auth</span></div>
+        </div>
+        <div class="project-row">
+            <div class="file-tag">desktop-app</div>
+            <h3>Driver Monitoring System</h3>
+            <p>A production-style safety application that tracks driver attention in real time using head-pose estimation and a trained model, with persistent logging for review.</p>
+            <div class="stack"><span>Computer Vision</span><span>Keras</span><span>PostgreSQL</span></div>
+        </div>
+        <div class="project-row">
+            <div class="file-tag">automation-platform</div>
+            <h3>Content & Metadata Automation Suite</h3>
+            <p>A desktop platform that generates and manages large batches of content assets end-to-end — templated design generation, AI-written metadata, and automated submission across multiple platforms.</p>
+            <div class="stack"><span>Python</span><span>AI Metadata</span><span>Browser Automation</span></div>
+        </div>
+    </div>
+
+    <div class="github-cta">
+        <div>
+            <h3>More on GitHub</h3>
+            <p>The full list of what I've built and shipped — client work, experiments, and everything in between.</p>
+        </div>
+        <a href="https://github.com/mu-abdullahdev" class="btn-primary" target="_blank">github.com/mu-abdullahdev</a>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="experience">
+    <div class="section-head">
+        <div>
+            <div class="label">background</div>
+            <h2>Background</h2>
+        </div>
+        <p></p>
+    </div>
+    <div class="timeline-row">
+        <div class="date">2024 — Present</div>
+        <div>
+            <h3>BS Computer Science</h3>
+            <p>Emerson University, Multan — focused on software engineering, data structures, and applied AI.</p>
+        </div>
+    </div>
+    <div class="timeline-row">
+        <div class="date">2024 — Present</div>
+        <div>
+            <h3>Independent AI & Automation Developer</h3>
+            <p>Designing and building AI-integrated tools, dashboards, and voice systems for clients and personal ventures — end to end, from architecture to deployment.</p>
+        </div>
+    </div>
+</section>
+
+<hr class="rule">
+
+<section id="stack">
+    <div class="section-head">
+        <div>
+            <div class="label">skills</div>
+            <h2>Tools I work with</h2>
+        </div>
+        <p></p>
+    </div>
+    <div class="stack-wrap">
+        <div class="stack-chip">Python</div>
+        <div class="stack-chip">LLM APIs (OpenAI, Groq)</div>
+        <div class="stack-chip">Flask</div>
+        <div class="stack-chip">PyQt5 / PySide6</div>
+        <div class="stack-chip">Voice & TTS Systems</div>
+        <div class="stack-chip">Vector Databases / RAG</div>
+        <div class="stack-chip">PostgreSQL</div>
+        <div class="stack-chip">Automation & Bots</div>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="label">contact</div>
+    <h2>Let's build something that runs on its own.</h2>
+    <p>Have a workflow that needs AI in it? Tell me what you're working with.</p>
+    <a href="mailto:muabdullah0809@gmail.com" class="btn-primary">muabdullah0809@gmail.com</a>
+    <div class="social-row">
+        <a href="https://wa.me/923243676105?text=Hi%20Abdullah%2C%20I%20found%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20project." target="_blank">WhatsApp</a>
+        <a href="https://linkedin.com/in/muhammad-abdullah-12a58038a" target="_blank">LinkedIn</a>
+        <a href="https://github.com/mu-abdullahdev" target="_blank">GitHub</a>
+        <a href="mailto:muabdullah0809@gmail.com">Email</a>
+    </div>
+    <div class="copyright">&copy; 2026 Muhammad Abdullah</div>
+</footer>
+
+<script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
 </body>
 </html>
-
